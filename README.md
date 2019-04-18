@@ -22,7 +22,7 @@
 
 ### Installing Dependencies
 
-From within the subdirectory:
+From within the root directory:
 
 ```sh
 npm install
