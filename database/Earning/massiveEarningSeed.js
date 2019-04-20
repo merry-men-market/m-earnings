@@ -1,6 +1,3 @@
-// const db = require('../index.js');
-// const Earning = require('./EarningScheme');
-const faker = require('faker');
 const fs =  require('fs');
 
 const EPSQuarter = [
@@ -14,475 +11,404 @@ const EPSQuarter = [
 ];
 
 const companyData = [{
-    id: '001',
     ticker: 'SNAP',
     company: 'Snap'
   },
   {
-    id: '002',
     ticker: 'TSLA',
     company: 'Tesla'
   },
   {
-    id: '003',
     ticker: 'AMZN',
     company: 'Amazon'
   },
   {
-    id: '004',
     ticker: 'TWTR',
     company: 'Twitter'
   },
   {
-    id: '005',
     ticker: 'BABA',
     company: 'Alibaba'
   },
   {
-    id: '006',
     ticker: 'BAC',
     company: 'Bank of America'
   },
   {
-    id: '007',
     ticker: 'NFLX',
     company: 'Netflix'
   },
   {
-    id: '008',
     ticker: 'NVDA',
     company: 'NVIDIA'
   },
   {
-    id: '009',
     ticker: 'DIS',
     company: 'Disney'
   },
   {
-    id: '010',
     ticker: 'PLUG',
     company: 'Plug Power'
   },
   {
-      id: '011',
     ticker: 'SQ',
     company: 'Square'
   },
   {
-    id: '012',
     ticker: 'ZNGA',
     company: 'Zynga'
   },
   {
-  id: '013',
-  ticker: 'CHK',
-  company: 'Chesapeake Energy'
+    ticker: 'CHK',
+    company: 'Chesapeake Energy'
   },
   {
-  id: '014',
-  ticker: 'NIO',
-  company: 'NIO'
+    ticker: 'NIO',
+    company: 'NIO'
   },
   {
-  id: '015',
-  ticker: 'T',
-  company: 'AT&T'
+    ticker: 'T',
+    company: 'AT&T'
   },
   {
-  id: '016',
-  ticker: 'HEXO',
-  company: 'Hexo'
+    ticker: 'HEXO',
+    company: 'Hexo'
   },
   {
-  id: '017',
-  ticker: 'MU',
-  company: 'Micron Technology'
+    ticker: 'MU',
+    company: 'Micron Technology'
   },
   {
-  id: '018',
-  ticker: 'GRPN',
-  company: 'Groupon'
+    ticker: 'GRPN',
+    company: 'Groupon'
   },
   {
-  id: '019',
-  ticker: 'SBUX',
-  company: 'Starbucks'
+    ticker: 'SBUX',
+    company: 'Starbucks'
   },
   {
-  id: '020',
-  ticker: 'APHA',
-  company: 'Aphria'
+    ticker: 'APHA',
+    company: 'Aphria'
   },
   {
-  id: '021',
-  ticker: 'RAD',
-  company: 'Rite Aid'
+    ticker: 'RAD',
+    company: 'Rite Aid'
   },
   {
-  id: '022',
-  ticker: 'SIRI',
-  company: 'Sirius XM'
+    ticker: 'SIRI',
+    company: 'Sirius XM'
   },
   {
-  id: '023',
-  ticker: 'ATVI',
-  company: 'Activision Blizzard'
+    ticker: 'ATVI',
+    company: 'Activision Blizzard'
   },
   {
-  id: '024',
-  ticker: 'NTDOY',
-  company: 'Nintendo'
+    ticker: 'NTDOY',
+    company: 'Nintendo'
   },
   {
-  id: '025',
   ticker: 'NKE',
   company: 'Nike'
   },
   {
-  id: '026',
-  ticker: 'INTC',
-  company: 'Intel'
+    ticker: 'INTC',
+    company: 'Intel'
   },
   {
-  id: '027',
-  ticker: 'IQ',
-  company: 'iQIYI'
+    ticker: 'IQ',
+    company: 'iQIYI'
   },
   {
-  id: '028',
-  ticker: 'VOO',
-  company: 'Vanguard'
+    ticker: 'VOO',
+    company: 'Vanguard'
   },
   {
-  id: '029',
-  ticker: 'S',
-  company: 'Sprint'
+    ticker: 'S',
+    company: 'Sprint'
   },
   {
-  id: '030',
-  ticker: 'WFT',
-  company: 'Weatherford'
+    ticker: 'WFT',
+    company: 'Weatherford'
   },
   {
-  id: '031',
-  ticker: 'KO',
-  company: 'Coca-Cola'
+    ticker: 'KO',
+    company: 'Coca-Cola'
   },
   {
-  id: '032',
-  ticker: 'BRK',
-  company: 'Berkshire Hathaway'
+    ticker: 'BRK',
+    company: 'Berkshire Hathaway'
   },
   {
-  id: '033',
-  ticker: 'TLRY',
-  company: 'Tilray'
+    ticker: 'TLRY',
+    company: 'Tilray'
   },
   {
-  id: '034',
-  ticker: 'BA',
-  company: 'Boeing'
+    ticker: 'BA',
+    company: 'Boeing'
   },
   {
-  id: '035',
-  ticker: 'MJ',
-  company: 'ETFMG Alternative Harvest'
+    ticker: 'MJ',
+    company: 'ETFMG Alternative Harvest'
   },
   {
-  id: '036',
-  ticker: 'JD',
-  company: 'JD.com'
+    ticker: 'JD',
+    company: 'JD.com'
   },
   {
-  id: '037',
-  ticker: 'V',
-  company: 'Visa'
+    ticker: 'V',
+    company: 'Visa'
   },
   {
-  id: '038',
-  ticker: 'AUY',
-  company: 'Yamana Gold'
+    ticker: 'AUY',
+    company: 'Yamana Gold'
   },
   {
-  id: '039',
-  ticker: 'SPY',
-  company: 'SPDR'
- },
- {
-  id: '040',
-  ticker: 'GERN',
-  company: 'Geron'
+    ticker: 'SPY',
+    company: 'SPDR'
   },
   {
-  id: '041',
-  ticker: 'PYPL',
-  company: 'PayPal'
+    ticker: 'GERN',
+    company: 'Geron'
   },
   {
-  id: '042',
-  ticker: 'TCEHY',
-  company: 'Tencent'
+    ticker: 'PYPL',
+    company: 'PayPal'
   },
   {
-    id: '043',
+    ticker: 'TCEHY',
+    company: 'Tencent'
+  },
+  {
     ticker: 'GOOGL',
     company: 'Alphabet'
   },
-  { id: '044',
+  {
     ticker: 'CSCO',
     company: 'Cisco'
   },
   {
-  id: '045',
-  ticker: 'CRM',
-  company: 'Salesforce'
+    ticker: 'CRM',
+    company: 'Salesforce'
   },
   {
-  id: '046',
-  ticker: 'ROKU',
-  company: 'Roku'
+    ticker: 'ROKU',
+    company: 'Roku'
   },
   {
-  id: '047',
-  ticker: 'CRBP',
-  company: 'Corbus Pharmaceuticals'
+    ticker: 'CRBP',
+    company: 'Corbus Pharmaceuticals'
   },
   {
-  id: '048',
-  ticker: 'DBX',
-  company: 'Dropbox'
+    ticker: 'DBX',
+    company: 'Dropbox'
   },
   {
-  id: '049',
-  ticker: 'WMT',
-  company: 'Walmart'
+    ticker: 'WMT',
+    company: 'Walmart'
   },
   {
-  id: '050',
-  ticker: 'JCP',
-  company: 'J.C. Penney'
+    ticker: 'JCP',
+    company: 'J.C. Penney'
   },
   {
-  id: '051',
-  ticker: 'GM',
-  company: 'GM'
+    ticker: 'GM',
+    company: 'GM'
   },
   {
-  id: '052',
-  ticker: 'VTI',
-  company: 'Vanguard Total'
+    ticker: 'VTI',
+    company: 'Vanguard Total'
   },
   {
-  id: '053',
-  ticker: 'BILI',
-  company: 'Bilibili'
+    ticker: 'BILI',
+    company: 'Bilibili'
   },
   {
-  id: '054',
-  ticker: 'NOK',
-  company: 'Nokia'
+    ticker: 'NOK',
+    company: 'Nokia'
   },
   {
-  id: '055',
-  ticker: 'GLUU',
-  company: 'Glu Mobile'
+    ticker: 'GLUU',
+    company: 'Glu Mobile'
   },
   {
-  id: '056',
-  ticker: 'VZ',
-  company: 'Verizon'
+    ticker: 'VZ',
+    company: 'Verizon'
   },
   {
-  id: '057',
-  ticker: 'VSLR',
-  company: 'Vivint Solar'
+    ticker: 'VSLR',
+    company: 'Vivint Solar'
   },
   {
-  id: '058',
-  ticker: 'SHOP',
-  company: 'Shopify'
+    ticker: 'SHOP',
+    company: 'Shopify'
   },
   {
-  id: '059',
-  ticker: 'CARA',
-  company: 'Cara Therapeutics'
+    ticker: 'CARA',
+    company: 'Cara Therapeutics'
   },
   {
-  id: '060',
-  ticker: 'SNE',
-  company: 'Sony'
+    ticker: 'SNE',
+    company: 'Sony'
   },
   {
-  id: '061',
-  ticker: 'PFE',
-  company: 'Pfizer'
+    ticker: 'PFE',
+    company: 'Pfizer'
   },
   {
-  id: '062',
-  ticker: 'ENPH',
-  company: 'Enphase Energy'
+    ticker: 'ENPH',
+    company: 'Enphase Energy'
   },
   {
-  id: '063',
-  ticker: 'CVS',
-  company: 'CVS'
+    ticker: 'CVS',
+    company: 'CVS'
   },
   {
-  id: '064',
-  ticker: 'SPOT',
-  company: 'Spotify'
+    ticker: 'SPOT',
+    company: 'Spotify'
   },
   {
-  id: '065',
-  ticker: 'COST',
-  company: 'Costco'
+    ticker: 'COST',
+    company: 'Costco'
   },
   {
-  id: '066',
-  ticker: 'TRXC',
-  company: 'TransEnterix'
+    ticker: 'TRXC',
+    company: 'TransEnterix'
   },
   {
-  id: '067',
-  ticker: 'TWLO',
-  company: 'Twilio'
+    ticker: 'TWLO',
+    company: 'Twilio'
   },
   {
-  id: '068',
-  ticker: 'PCG',
-  company: 'PG&E'
+    ticker: 'PCG',
+    company: 'PG&E'
   },
   {
-  id: '069',
-  ticker: 'KHC',
-  company: 'Kraft Foods'
+    ticker: 'KHC',
+    company: 'Kraft Foods'
   },
   {
-  id: '070',
-  ticker: 'INSY',
-  company: 'Insys Therapeutics'
+    ticker: 'INSY',
+    company: 'Insys Therapeutics'
   },
   {
-  id: '071',
-  ticker: 'AKS',
-  company: 'AK Steel'
+    ticker: 'AKS',
+    company: 'AK Steel'
   },
   {
-  id: '072',
-  ticker: 'LUV',
-  company: 'Southwest Airlines'
+    ticker: 'LUV',
+    company: 'Southwest Airlines'
   },
   {
-  ticker: 'CRSP',
-  company: 'CRISPR'
+    ticker: 'CRSP',
+    company: 'CRISPR'
   },
   {
-  ticker: 'FDX',
-  company: 'FeDex'
+    ticker: 'FDX',
+    company: 'FeDex'
   },
   {
-  ticker: 'VKTX',
-  company: 'Viking Therapeutics'
+    ticker: 'VKTX',
+    company: 'Viking Therapeutics'
   },
   {
-  ticker: 'JPM',
-  company: 'JPMorgan Chase'
+    ticker: 'JPM',
+    company: 'JPMorgan Chase'
   },
   {
-  ticker: 'DNR',
-  company: 'Denbury'
+    ticker: 'DNR',
+    company: 'Denbury'
   },
   {
-  ticker: 'SPWR',
-  company: 'SunPower'
+    ticker: 'SPWR',
+    company: 'SunPower'
   },
   {
-  ticker: 'UAA',
-  company: 'Under Armour'
+    ticker: 'UAA',
+    company: 'Under Armour'
   },
   {
-  ticker: 'BOTZ',
-  company: 'Global X Robotics & Artificial Intelligence ETF'
+    ticker: 'BOTZ',
+    company: 'Global X Robotics & Artificial Intelligence ETF'
   },
   {
-  ticker: 'SFIX',
-  company: 'Stitch Fix'
+    ticker: 'SFIX',
+    company: 'Stitch Fix'
   },
   {
-  ticker: 'AMAT',
-  company: 'Applied Materials'
+    ticker: 'AMAT',
+    company: 'Applied Materials'
   },
   {
-  ticker: 'YETI',
-  company: 'YETI'
+    ticker: 'YETI',
+    company: 'YETI'
   },
   {
-  ticker: 'EA',
-  company: 'EA'
+    ticker: 'EA',
+    company: 'EA'
   },
   {
-  ticker: 'QCOM',
-  company: 'Qualcomm'
+    ticker: 'QCOM',
+    company: 'Qualcomm'
   },
   {
-  ticker: 'TGT',
-  company: 'Target'
+    ticker: 'TGT',
+    company: 'Target'
   },
   {
-  ticker: 'TEVA',
-  company: 'Teva Pharmaceutical'
+    ticker: 'TEVA',
+    company: 'Teva Pharmaceutical'
   },
   {
-  ticker: 'JNJ',
-  company: 'Johnson & Johnson'
+    ticker: 'JNJ',
+    company: 'Johnson & Johnson'
   },
   {
-  ticker: 'IIPR',
-  company: 'Innovative Industrial Properties'
+    ticker: 'IIPR',
+    company: 'Innovative Industrial Properties'
   },
   {
-  ticker: 'ACB',
-  company: 'Aurora Cannabis'
+    ticker: 'ACB',
+    company: 'Aurora Cannabis'
   },
   {
-  ticker: 'GE',
-  company: 'GE'
+    ticker: 'GE',
+    company: 'GE'
   },
   {
-  ticker: 'AAPL',
-  company: 'Apple'
+    ticker: 'AAPL',
+    company: 'Apple'
   },
   {
-  ticker: 'F',
-  company: 'Ford'
+    ticker: 'F',
+    company: 'Ford'
   },
   {
-  ticker: 'CRON',
-  company: 'Cronos Group'
+    ticker: 'CRON',
+    company: 'Cronos Group'
   },
   {
-  ticker: 'MSFT',
-  company: 'Microsoft'
+    ticker: 'MSFT',
+    company: 'Microsoft'
   },
   {
-  ticker: 'GPRO',
-  company: 'GoPro'
+    ticker: 'GPRO',
+    company: 'GoPro'
   },
   {
-  ticker: 'FIT',
-  company: 'Fitbit'
+    ticker: 'FIT',
+    company: 'Fitbit'
   },
   {
-  ticker: 'AMD',
-  company: 'AMD'
+    ticker: 'AMD',
+    company: 'AMD'
   },
   {
-  ticker: 'FB',
-  company: 'Facebook'
+    ticker: 'FB',
+    company: 'Facebook'
   },
   {
-  ticker: 'CGC',
-  company: 'Canopy Growth'
+    ticker: 'CGC',
+    company: 'Canopy Growth'
   },
 ];
 
@@ -502,7 +428,7 @@ const generateStockEarnings = () => {
   stream.write('[');
 
   let chunk =[];
-  for (let i = 1; i <= 10000000; i += 1) {
+  for (let i = 1; i <= 10; i += 1) {
     var randomIdx = Math.floor(Math.random() * 100);
     const companyName = companyData[randomIdx].company
     let actualEarning = Math.random() * 7;
@@ -546,95 +472,3 @@ const generateStockEarnings = () => {
 };
 
 generateStockEarnings();
-
-
-
-
-// let writer = fs.createWriteStream(__dirname + '/datafile.csv');
-
-
-// function writeOneMillionTimes(writer, encoding, callback) {
-//   let i = 10;
-
-//   function write() {
-//     let ok = true;
-//     do {
-//       var randomIdx = Math.floor(Math.random() * 100);
-//       const companyName =  companyData[randomIdx].company
-//       let actualEarning = Math.random() * 7;
-//       let estimatedEarning = actualEarning;
-//       let quarterNumber = 0;
-//       for (const quarter of EPSQuarter) {
-//         let range = Math.floor(Math.random() * 100);
-//         range *= Math.floor(Math.random() * 2) === 1 ? 0.45 : -0.40;
-//         actualEarning *= (1 + range / 100);
-//         actualEarning = actualEarning.toFixed(2);
-
-//         let estimateRange = Math.floor(Math.random() * 100);
-//         estimateRange *= Math.floor(Math.random() * 2) === 1 ? 0.10: -0.10;
-//         estimatedEarning = actualEarning * (1 + estimateRange / 100);
-//         estimatedEarning = estimatedEarning.toFixed(2);
-//         let sampleEarnings = {
-//           company: companyName,
-//           actualEarning: Number(actualEarning),
-//           estimatedEarning: Number(estimatedEarning),
-//           quarter,
-//           id: i,
-//           quarterNumber,
-//         };
-//         quarterNumber += 1;
-//         sampleEarnings = changeObjectToCSV(sampleEarnings);
-//         }
-//       i--;
-//       if (i === 0) {
-//         writer.write(`${sampleEarnings},\n`, encoding, callback);
-//       } else {
-//         // See if we should continue, or wait.
-//         // Don't pass the callback, because we're not done yet.
-//         ok = writer.write(`${sampleEarnings}\n`, encoding);
-//       }
-//     }
-//     while (i > 0 && ok);
-//     if (i > 0) {
-//       // had to stop early!
-//       // write some more once it drains
-//       writer.once('drain', write);
-//     }
-//   }
-//   write();
-// }
-
-// writeOneMillionTimes(writer, 'utf8', () => console.log('completed the file write'))
-
-
-
-// for (let i = 0; i < 1000; i++) {
-//   const companyName =  companyData[randomIndx].company
-//   let actualEarning = Math.random() * 7;
-//   let estimatedEarning = actualEarning;
-//   let quarterNumber = 0;
-//   for (const quarter of EPSQuarter) {
-//     let range = Math.floor(Math.random() * 100);
-//     range *= Math.floor(Math.random() * 2) === 1 ? 0.45 : -0.40;
-//     actualEarning *= (1 + range / 100);
-//     actualEarning = actualEarning.toFixed(2);
-
-//     let estimateRange = Math.floor(Math.random() * 100);
-//     estimateRange *= Math.floor(Math.random() * 2) === 1 ? 0.10 : -0.10;
-//     estimatedEarning = actualEarning * (1 + estimateRange / 100);
-//     estimatedEarning = estimatedEarning.toFixed(2);
-
-//     const sampleEarnings = {
-//       company: companyName,
-//       actualEarning: Number(actualEarning),
-//       estimatedEarning: Number(estimatedEarning),
-//       quarter,
-//       id: i,
-//       quarterNumber,
-//     };
-//     quarterNumber += 1;
-//     console.log(sampleEarnings);
-//   }
-// }
-
-
