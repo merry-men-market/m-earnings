@@ -423,17 +423,16 @@ function writeTenMillionTimes(writer, data) {
  });
 }
 
-const generateStockEarnings = () => {
-  const stream = fs.createWriteStream('data.csv');
-  stream.write('[');
+function generateCompanyInfo(index){
+  const sampleData = []
+  var randomIdx = Math.floor(Math.random() * 100);
+  const companyName = companyData[randomIdx].company
+  sampleData.push(index, companyName)
 
-  let chunk =[];
-  for (let i = 1; i <= 10; i += 1) {
-    var randomIdx = Math.floor(Math.random() * 100);
-    const companyName = companyData[randomIdx].company
-    let actualEarning = Math.random() * 7;
-    let estimatedEarning = actualEarning;
-    let quarterNumber = 0;
+  let actualEarning = Math.random() * 7;
+  let estimatedEarning = actualEarning;
+  let quarterNumber = 0;
+
     for (const quarter of EPSQuarter) {
       let range = Math.floor(Math.random() * 100);
       range *= Math.floor(Math.random() * 2) === 1 ? 0.45 : -0.40;
@@ -444,31 +443,23 @@ const generateStockEarnings = () => {
       estimateRange *= Math.floor(Math.random() * 2) === 1 ? 0.10 : -0.10;
       estimatedEarning = actualEarning * (1 + estimateRange / 100);
       estimatedEarning = estimatedEarning.toFixed(2);
+      actualEarning = Number(actualEarning);
+      estimatedEarning = Number(estimatedEarning);
 
-      let sampleEarnings = {
-        company: companyName,
-        actualEarning: Number(actualEarning),
-        estimatedEarning: Number(estimatedEarning),
-        quarter,
-        id: i,
-        quarterNumber,
-      };
+      sampleData.push(quarter, quarterNumber, actualEarning, estimatedEarning)
       quarterNumber += 1;
-
-      if (i !== 0 && i % 10 === 0) {
-        writeTenMillionTimes(stream, `${JSON.stringify(chunk)},`);
-        chunk = [];
-      } else {
-        chunk.push(sampleEarnings);
-      }
-
-      if(i !== 0 && i % 1000 === 0) {
-        stream.write('\n');
-      }
     }
-    console.log(i);
+    sampleData.push('\n')
+    return sampleData.join()
+}
+
+const generateStockEarnings = () => {
+  const stream = fs.createWriteStream('data.csv');
+  for (let i = 1; i <= 10000000; i += 1) {
+    const companyInfo = generateCompanyInfo(i)
+    writeTenMillionTimes(stream, companyInfo);
+    (i % 1000 === 0) && console.log(i);
   }
-  stream.write(']')
-};
+}
 
 generateStockEarnings();
