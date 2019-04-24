@@ -1,2 +1,98 @@
 node_modules
 datafile.csv
+Earning
+companyDetails.csv
+quarterDetails.csv
+
+
+\COPY company(company_id,name)FROM '/Users/jeena/hackReactor/hrsf114/merryMenMarket/m-earnings/database/Earning/sampleData.csv' DELIMITER ',' CSV;
+
+I am doing the earnings part of robinhood. I was able to generate my data csv file. 
+
+1,AMD,Q4 2017,0,2.7,2.56,Q1 2018,1,3.21,3.32,Q2 2018,2,3.13,3.42,Q3 2018,3,4.4,4.71,Q4 2018,4,3.56,3.28,Q1 2019,5,2.83,2.72,Q2 2019,6,4.01,4.28 =>
+this is how my data looks in my csv file. 
+
+I started seeding my data to PostgreSQL by creating a table as follows:-
+CREATE TABLE companyEarnings(
+  id SERIAL PRIMARY KEY NOT NULL,
+  company_name VARCHAR(50)NOT NULL,
+  quarter1 VARCHAR(10)NOT NULL,
+  quater1_number SMALLINT,
+  actual1 FLOAT(2) NOT NULL,
+  estimate1 FLOAT(2) NOT NULL,
+  quarter2 VARCHAR(10)NOT NULL,
+  quater2_number SMALLINT,
+  actual2 FLOAT(2) NOT NULL,
+  estimate2 FLOAT(2) NOT NULL,
+  quarter3 VARCHAR(10)NOT NULL,
+  quater3_number SMALLINT,
+  actual3 FLOAT(2) NOT NULL,
+  estimate3 FLOAT(2) NOT NULL,
+  quarter4 VARCHAR(10)NOT NULL,
+  quater4_number SMALLINT,
+  actual4 FLOAT(2) NOT NULL,
+  estimate4 FLOAT(2) NOT NULL,
+  quarter5 VARCHAR(10)NOT NULL,
+  quater5_number SMALLINT,
+  actual5 FLOAT(2) NOT NULL,
+  estimate5 FLOAT(2) NOT NULL,
+  quarter6 VARCHAR(10)NOT NULL,
+  quater6_number SMALLINT,
+  actual6 FLOAT(2) NOT NULL,
+  estimate6 FLOAT(2) NOT NULL,
+  quarter7 VARCHAR(10)NOT NULL,
+  quater7_number SMALLINT,
+  actual7 FLOAT(2) NOT NULL,
+  estimate7 FLOAT(2) NOT NULL
+);
+
+As you can see I have 30 columns. So I was thinking of creating 2 different tables like this:-
+CREATE TABLE company (
+  company_id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(100)
+)
+
+CREATE TABLE quarter (
+  quarter_id SERIAL PRIMARY KEY NOT NULL,
+  company_id INTEGER,
+  name VARCHAR(10)NOT NULL,
+  quater_number SMALLINT,
+  actual_earning REAL NOT NULL,
+  estimate_earning REAL NOT NULL,
+  FOREIGN KEY (company_id) REFERENCES company(company_id)
+);
+
+but I am not sure how to send my csv file into this multiple tables in PostgreSQL.
+
+CREATE TABLE companyEarnings(
+  id SERIAL PRIMARY KEY NOT NULL,
+  company_name VARCHAR(50)NOT NULL,
+  quarter1 VARCHAR(10)NOT NULL,
+  quater1_number SMALLINT,
+  actual1 FLOAT(2) NOT NULL,
+  estimate1 FLOAT(2) NOT NULL,
+  quarter2 VARCHAR(10)NOT NULL,
+  quater2_number SMALLINT,
+  actual2 FLOAT(2) NOT NULL,
+  estimate2 FLOAT(2) NOT NULL,
+  quarter3 VARCHAR(10)NOT NULL,
+  quater3_number SMALLINT,
+  actual3 FLOAT(2) NOT NULL,
+  estimate3 FLOAT(2) NOT NULL,
+  quarter4 VARCHAR(10)NOT NULL,
+  quater4_number SMALLINT,
+  actual4 FLOAT(2) NOT NULL,
+  estimate4 FLOAT(2) NOT NULL,
+  quarter5 VARCHAR(10)NOT NULL,
+  quater5_number SMALLINT,
+  actual5 FLOAT(2) NOT NULL,
+  estimate5 FLOAT(2) NOT NULL,
+  quarter6 VARCHAR(10)NOT NULL,
+  quater6_number SMALLINT,
+  actual6 FLOAT(2) NOT NULL,
+  estimate6 FLOAT(2) NOT NULL,
+  quarter7 VARCHAR(10)NOT NULL,
+  quater7_number SMALLINT,
+  actual7 FLOAT(2) NOT NULL,
+  estimate7 FLOAT(2) NOT NULL
+);

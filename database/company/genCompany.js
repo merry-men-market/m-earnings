@@ -1,14 +1,5 @@
-const fs = require('file-system');
-
-const EPSQuarter = [
-  'Q4 2017',
-  'Q1 2018',
-  'Q2 2018',
-  'Q3 2018',
-  'Q4 2018',
-  'Q1 2019',
-  'Q2 2019'
-];
+const fs = require('fs');
+const { bar } = require('../progressBar.js');
 
 const companyData = [
   { id: '001', ticker: 'SNAP', company: 'Snap' },
@@ -113,21 +104,22 @@ const companyData = [
   { id: '100', ticker: 'CGC', company: 'Canopy Growth' }
 ];
 
-let writer = fs.createWriteStream(__dirname + '/sampleData.csv');
+let writer = fs.createWriteStream(__dirname + '/companyDetails.csv');
 
-function writeOneMillionTimes(writer, dataGenerator, encoding, callback, i) {
+function writeTenMillionTimes(writer, companyGenerator, encoding, callback, i) {
   function write() {
     let ok = true;
     do {
       i++;
-      let result = dataGenerator(i) + '\n';
-      if (i === 100) {
+      let result = companyGenerator(i) + '\n';
+      bar.tick();
+      if (i === 10000000) {
         writer.write(result, encoding, callback);
       } else {
         ok = writer.write(result, encoding);
       }
-    } while (i < 100 && ok);
-    if(i < 100) {
+    } while (i < 10000000 && ok);
+    if(i < 10000000) {
       writer.once('drain', write);
     }
   }
@@ -137,31 +129,9 @@ function writeOneMillionTimes(writer, dataGenerator, encoding, callback, i) {
 function generateCompanyInfo(i){
   const sampleData = []
   var randomIdx = Math.floor(Math.random() * 100);
-  const companyName = companyData[randomIdx].company
-  
-  sampleData.push(i, companyName)
+  const companyName = companyData[randomIdx].company;
+  sampleData.push(i, companyName);
+  return sampleData.join();
+}
 
-  let actualEarning = Math.random() * 7;
-  let estimatedEarning = actualEarning;
-  let quarterNumber = 0;
-
-    for (const quarter of EPSQuarter) {
-      let range = Math.floor(Math.random() * 100);
-      range *= Math.floor(Math.random() * 2) === 1 ? 0.45 : -0.40;
-      actualEarning *= (1 + range / 100);
-      actualEarning = actualEarning.toFixed(2);
-
-      let estimateRange = Math.floor(Math.random() * 100);
-      estimateRange *= Math.floor(Math.random() * 2) === 1 ? 0.10 : -0.10;
-      estimatedEarning = actualEarning * (1 + estimateRange / 100);
-      estimatedEarning = estimatedEarning.toFixed(2);
-      actualEarning = Number(actualEarning);
-      estimatedEarning = Number(estimatedEarning);
-
-      sampleData.push(quarter, quarterNumber, actualEarning, estimatedEarning)
-      quarterNumber += 1;
-    }
-    return sampleData.join()
-};
-
-writeOneMillionTimes(writer, generateCompanyInfo, encoding = 'UTF-8', callback = () => console.log('completed the file write'), i = 0);
+writeTenMillionTimes(writer, generateCompanyInfo, encoding = 'UTF-8', callback = () => console.log('completed the file write'), i = 0);
