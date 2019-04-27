@@ -129,7 +129,7 @@ function writeTenMillionTimes(writer, companyGenerator, encoding, callback, i) {
 function generateCompanyInfo(i){
   const sampleData = []
   var randomIdx = Math.floor(Math.random() * 100);
-  const companyName = companyData[randomIdx].company;
+  const companyName = companyData[randomIdx].company + i;
   sampleData.push(i, companyName);
   return sampleData.join();
 }
