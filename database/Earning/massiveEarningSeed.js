@@ -1,4 +1,5 @@
 const fs = require('file-system');
+const { bar } = require('../progressBar');
 
 const EPSQuarter = [
   'Q4 2017',
@@ -113,55 +114,62 @@ const companyData = [
   { id: '100', ticker: 'CGC', company: 'Canopy Growth' }
 ];
 
-let writer = fs.createWriteStream(__dirname + '/sampleData.csv');
+
+let writer = fs.createWriteStream(__dirname + '/sampleFile.csv');
 
 function writeOneMillionTimes(writer, dataGenerator, encoding, callback, i) {
+  const quantity = 100;
+  let counter = 0;
   function write() {
     let ok = true;
     do {
       i++;
-      let result = dataGenerator(i) + '\n';
-      if (i === 100) {
-        writer.write(result, encoding, callback);
-      } else {
-        ok = writer.write(result, encoding);
+      let randomIdx = Math.floor(Math.random() * 100);
+      let company_id = i;
+      const companyName = companyData[randomIdx].company + i;
+      const ticker = companyData[randomIdx].ticker + i;
+      let quarterNumber = 0;
+      for (const quarter of EPSQuarter) {
+        counter++;
+        quarterNumber += 1;
+        let result = dataGenerator(counter, company_id, companyName, ticker, quarter, quarterNumber) + '\n';
+        if (i === quantity && quarterNumber === 7) {
+          writer.write(result, encoding, callback);
+        } else {
+          ok = writer.write(result, encoding);
+        }
       }
-    } while (i < 100 && ok);
-    if(i < 100) {
+      bar.tick();
+    } while (i < quantity && ok);
+    if(i < quantity) {
       writer.once('drain', write);
     }
   }
   write();
 }
 
-function generateCompanyInfo(i){
+function generateCompanyInfo(counter, company_id, companyName, ticker, quarterName, quarterNumber){
   const sampleData = []
-  var randomIdx = Math.floor(Math.random() * 100);
-  const companyName = companyData[randomIdx].company
-  
-  sampleData.push(i, companyName)
-
+  sampleData.push(counter);
+  sampleData.push(company_id, companyName, ticker)
   let actualEarning = Math.random() * 7;
   let estimatedEarning = actualEarning;
-  let quarterNumber = 0;
 
-    for (const quarter of EPSQuarter) {
-      let range = Math.floor(Math.random() * 100);
-      range *= Math.floor(Math.random() * 2) === 1 ? 0.45 : -0.40;
-      actualEarning *= (1 + range / 100);
-      actualEarning = actualEarning.toFixed(2);
+  let range = Math.floor(Math.random() * 100);
+  range *= Math.floor(Math.random() * 2) === 1 ? 0.45 : -0.40;
+  actualEarning *= (1 + range / 100);
+  actualEarning = actualEarning.toFixed(2);
 
-      let estimateRange = Math.floor(Math.random() * 100);
-      estimateRange *= Math.floor(Math.random() * 2) === 1 ? 0.10 : -0.10;
-      estimatedEarning = actualEarning * (1 + estimateRange / 100);
-      estimatedEarning = estimatedEarning.toFixed(2);
-      actualEarning = Number(actualEarning);
-      estimatedEarning = Number(estimatedEarning);
+  let estimateRange = Math.floor(Math.random() * 100);
+  estimateRange *= Math.floor(Math.random() * 2) === 1 ? 0.10 : -0.10;
+  estimatedEarning = actualEarning * (1 + estimateRange / 100);
+  estimatedEarning = estimatedEarning.toFixed(2);
+  actualEarning = Number(actualEarning);
+  estimatedEarning = Number(estimatedEarning);
 
-      sampleData.push(quarter, quarterNumber, actualEarning, estimatedEarning)
-      quarterNumber += 1;
-    }
-    return sampleData.join()
+  sampleData.push(quarterName, quarterNumber, actualEarning, estimatedEarning)
+
+  return sampleData.join()
 };
 
 writeOneMillionTimes(writer, generateCompanyInfo, encoding = 'UTF-8', callback = () => console.log('completed the file write'), i = 0);
