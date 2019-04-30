@@ -6,6 +6,6 @@ sample.File.csv
 newrelic.js
 loadBalancer
 server2
-newrelic_agaent.log
 database/Earning/newrelic_agent.log
 newrelic_agent.log
+database/Earning/sampleFile.csv
