@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { bar } = require('../progressBar');
 
-const EPSQuarter = [
+const EPSchart = [
   'Q4 2017',
   'Q1 2018',
   'Q2 2018',
@@ -20,7 +20,7 @@ function writeTenMillionTimes(writer, dataGenerator, encoding, callback, i) {
     do {
       i++;
       let quarterNumber = 0;
-      for (const quarter of EPSQuarter) {
+      for (const quarter of EPSchart) {
         quarterNumber += 1;
         let result = dataGenerator(i, quarter,  quarterNumber) + '\n';
         if (i === quantity && quarterNumber === 7) {
