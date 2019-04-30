@@ -19,7 +19,7 @@ class EarningChart extends React.Component {
       <span className='EstimatedCircle'></span>
       <span style = {{ marginTop: -estSpot - 55 }} className='estCircle'></span>
       <span style = {{ marginTop: -actSpot - 55 }} className='actCircle'></span>
-      <div>{this.props.earning.quarter}</div>
+      <div>{this.props.earning.quarterName}</div>
      </div>
     );
   }

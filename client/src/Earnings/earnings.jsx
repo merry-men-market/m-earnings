@@ -5,10 +5,10 @@ import EarningsChartFrame from './earningsChartFrame.jsx';
 import EarningBottomBar from './earningBottomBar.jsx';
 import $ from 'jquery';
 
-const host = '52.53.224.110';
-const path = window.location.pathname;
+const host = 'localhost';
+let path = window.location.pathname;
 
-window.location.pathname
+// window.location.pathname
 class Earnings extends React.Component {
   constructor(props) {
     super(props);
@@ -18,15 +18,43 @@ class Earnings extends React.Component {
   }
 
   componentDidMount() {
-    $.get(`http://${host}:3002/api/earnings${path}`, (Data) => {
+   console.log("hitting path => ", path)
+   path = window.location.pathname;
+    $.get(`http://${host}:3002/api${path}`, (Data) => {
+      console.log('Data: ', Data)
+      const finalData = [];
+      var len = Data.length;
+      for (var i = 0; i < len; i++) {
+        finalData.push({
+          actualEarning: Data[i].actual_earning,
+          estimatedEarning: Data[i].estimate_earning,
+          quarterNumber: Data[i].quarter_number,
+          quarterName: Data[i].quarter_name
+        });
+      }
+      console.log(finalData);
+
+      // console.log("earnings got called")
     // $.get('//front-end-capstone.herokuapp.com/data/earnings', (Data) => {
       this.setState({
-        earnings: Data,
+        earnings: finalData,
       });
     });
   }
 
+
+
+
   render() {
+
+    // let dataFormat = [
+    //   {
+    //     quarterNumber: "ssss",
+    //     actualEarning: "2222",
+    //     estimatedEarning: "assd"
+    //   }
+    // ]
+  
     const earningsData = this.state.earnings;
     const actEarnings = [];
     const estEarnings = [];
