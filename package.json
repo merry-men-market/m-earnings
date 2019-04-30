@@ -1,12 +1,12 @@
 {
   "name": "earnings",
-  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "author": "Gary",
   "license": "ISC",
   "scripts": {
-    "start": "node server/server.js",
+    "startLB": "nodemon loadBalancer/loadBalancer.js",
+    "start1": "nodemon server1/server.js",
+    "start2": "nodemon server2/server.js",
     "build": "webpack --mode=production",
     "deploy": "grunt deploy -v",
     "dev": "npm-run-all --parallel webpack-*",
@@ -37,7 +37,9 @@
     "jquery": "^3.4.0",
     "mongoose": "^5.4.20",
     "morgan": "^1.9.1",
+    "newrelic": "^5.7.0",
     "npm": "^6.9.0",
+    "pg": "^7.10.0",
     "progress": "^2.0.3",
     "promise": "^8.0.3",
     "react": "^16.8.5",
@@ -67,5 +69,17 @@
     "supertest": "^4.0.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/merry-men-market/m-earnings.git"
+
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/merry-men-market/m-earnings/issues"
+  },
+  "homepage": "https://github.com/merry-men-market/m-earnings#readme"
 }
