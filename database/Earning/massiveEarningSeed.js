@@ -126,7 +126,7 @@ function writeOneMillionTimes(writer, dataGenerator, encoding, callback, i) {
       i++;
       let randomIdx = Math.floor(Math.random() * 100);
       let company_id = i;
-      const companyName = companyData[randomIdx].company + i;
+      const companyName = companyData[randomIdx].company;
       const ticker = companyData[randomIdx].ticker + i;
       let quarterNumber = 0;
       for (const quarter of EPSQuarter) {
