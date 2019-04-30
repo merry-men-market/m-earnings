@@ -5,7 +5,7 @@
   "license": "ISC",
   "scripts": {
     "startLB": "nodemon loadBalancer/loadBalancer.js",
-    "start1": "nodemon server1/server.js",
+    "start": "nodemon server1/server.js",
     "start2": "nodemon server2/server.js",
     "build": "webpack --mode=production",
     "deploy": "grunt deploy -v",
