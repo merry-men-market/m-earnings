@@ -97,6 +97,6 @@ app1.get('/api/earnings/:query', earningDb.getEarningsById);
 // });
 
 app1.listen(port1, () => {
-  console.log(`server running at: http://localhost:${port1}`);
+  console.log(`server running at: ec2-52-53-226-249.us-west-1.compute.amazonaws.com:${port1}`);
 });
 
