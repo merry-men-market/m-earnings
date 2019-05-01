@@ -7,3 +7,4 @@ CREATE TABLE quarter (
 );
 
 \COPY quarter FROM '/Users/jeena/hackReactor/hrsf114/merryMenMarket/m-earnings/database/quarter/quarterDetails.csv' WITH DELIMITER ',' CSV;
+--  for aws ec2 \COPY quarter FROM 'quarterDetails.csv' WITH DELIMITER ',' CSV;

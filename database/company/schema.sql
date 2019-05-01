@@ -4,3 +4,4 @@ CREATE TABLE company (
 );
 
 \COPY company FROM '/Users/jeena/hackReactor/hrsf114/merryMenMarket/m-earnings/database/company/companyDetails.csv' WITH DELIMITER ',' CSV;
+--  for aws ec2 \COPY company FROM 'companyDetails.csv' WITH DELIMITER ',' CSV;
