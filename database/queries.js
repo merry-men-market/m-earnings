@@ -1,6 +1,5 @@
 const Pool = require('pg').Pool
 const earnings = new Pool({
-  user: 'jeena',
   host: 'ec2-13-57-187-2.us-west-1.compute.amazonaws.com',
   database: 'earnings',
   port: 5432,
