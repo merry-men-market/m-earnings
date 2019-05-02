@@ -18,10 +18,10 @@ class Earnings extends React.Component {
   }
 
   componentDidMount() {
-   console.log("hitting path => ", path)
+  //  console.log("hitting path => ", path)
    path = window.location.pathname;
     $.get(`http://${host}:3002/api${path}`, (Data) => {
-      console.log('Data: ', Data)
+      // console.log('Data: ', Data)
       const finalData = [];
       var len = Data.length;
       for (var i = 0; i < len; i++) {
@@ -32,7 +32,7 @@ class Earnings extends React.Component {
           quarterName: Data[i].quarter_name
         });
       }
-      console.log(finalData);
+      // console.log(finalData);
 
       // console.log("earnings got called")
     // $.get('//front-end-capstone.herokuapp.com/data/earnings', (Data) => {

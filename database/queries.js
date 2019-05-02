@@ -16,6 +16,7 @@ const getEarningsById = (request, response) => {
         console.log('This error is made inside of queries.js in service: ',error);
         response.status(403);
       }
+      console.log('results: ', results)
       response.status(200).json(results.rows)
     })
   }
