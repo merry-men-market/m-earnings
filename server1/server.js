@@ -2,7 +2,7 @@ const newrelic = require('newrelic');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const morgan = require('morgan');
+// const morgan = require('morgan');
 const path = require('path');
 // const Earnings = require('../database/Earning/EarningScheme');
 const earningDb  = require('../database/queries.js');
@@ -11,7 +11,7 @@ const port1 = process.env.PORT || 3002;
 const db = require('../database/index.js');
 
 app1.use(cors());
-app1.use(morgan('tiny'));
+// app1.use(morgan('tiny'));
 app1.use(bodyParser.json());
 app1.use(bodyParser.urlencoded({ extended: true }));
 app1.use(express.static(`${__dirname}/../public/`));
