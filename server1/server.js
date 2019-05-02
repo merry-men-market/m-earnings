@@ -18,7 +18,10 @@ app1.use(express.static(`${__dirname}/../public/`));
 app1.use('/earnings/:query', express.static(path.join(__dirname, '../public')));
 app1.locals.newrelic = newrelic;
 
+
 app1.get('/api/earnings/:query', earningDb.getEarningsById);
+
+app1.use('/', express.static(path.join(__dirname, '../public')));
 
 // app1.get('/:id', (req, res) => {
 //   res.status(200).sendFile(path.resolve(__dirname, '../public/index.html'));
