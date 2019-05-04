@@ -5,7 +5,7 @@ const client = redis.createClient();
 const earnings = new Pool({
   user: 'postgres',
   password: '$password',
-  host: 'ec2-13-57-58-236.us-west-1.compute.amazonaws.com',
+  host: 'ec2-18-144-52-71.us-west-1.compute.amazonaws.com',
   database: 'earnings',
   port: 5432,
 });

@@ -100,6 +100,6 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 // });
 
 app.listen(port, () => {
-  console.log(`server running at: ec2-52-53-226-249.us-west-1.compute.amazonaws.com:${port}`);
+  console.log(`server is running at:${port}`);
 });
 
