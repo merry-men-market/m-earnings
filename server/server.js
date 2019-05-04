@@ -8,7 +8,7 @@ const path = require('path');
 const earningDb  = require('../database/queries.js');
 const app = express();
 const port = process.env.PORT || 3002;
-const db = require('../database/index.js');
+// const db = require('../database/index.js');
 
 // app.use(cors());
 // app.use(morgan('tiny'));
