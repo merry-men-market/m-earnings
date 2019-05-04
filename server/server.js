@@ -15,7 +15,7 @@ const port = process.env.PORT || 3002;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/../public/`));
-app.use('/earnings/:query', express.static(path.join(__dirname, '../public')));
+// app.use('/earnings/:query', express.static(path.join(__dirname, '../public')));
 
 
 app.get('/api/earnings/:query', earningDb.getEarningsById);
