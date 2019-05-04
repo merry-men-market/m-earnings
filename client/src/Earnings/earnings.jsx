@@ -20,7 +20,7 @@ class Earnings extends React.Component {
   componentDidMount() {
   //  console.log("hitting path => ", path)
    path = window.location.pathname;
-    $.get(`http://${host}:3002/api${path}`, (Data) => {
+    $.get(`/api${path}`, (Data) => {
       // console.log('Data: ', Data)
       const finalData = [];
       var len = Data.length;
